@@ -115,6 +115,15 @@
         "description": "Refers to the location URL in your key vault where the certificate was uploaded, it is should be in the format of https://<name of the vault>.vault.azure.net:443/secrets/<exact location>"
       }
     },
+    "aadTenantId": {
+      "type": "string",
+    },
+    "aadClusterApplicationId": {
+      "type": "string",
+    },
+    "aadClientApplicationId": {
+      "type": "string",
+    },
     "storageAccountType": {
       "type": "string",
       "allowedValues": [
@@ -802,6 +811,11 @@
         "certificate": {
           "thumbprint": "[parameters('certificateThumbprint')]",
           "x509StoreName": "[parameters('certificateStoreValue')]"
+        },
+        "azureActiveDirectory": {
+          "tenantId": "[parameters('aadTenantId')]",
+          "clusterApplication": "[parameters('aadClusterApplicationId')]",
+          "clientApplication": "[parameters('aadClientApplicationId')]"
         },
         "clusterState": "Default",
         "diagnosticsStorageAccountConfig": {

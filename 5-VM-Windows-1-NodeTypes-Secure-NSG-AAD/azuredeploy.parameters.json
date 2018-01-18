@@ -47,6 +47,15 @@
     "certificateUrlValue": {
       "value": "GEN-KEYVAULT-SSL-SECRET-URI"
     },
+    "aadTenantId": {
+      "value": "<guid>"
+    },
+    "aadClusterApplicationId": {
+        "value": "<guid>"
+    },
+    "aadClientApplicationId": {
+        "value": "<guid>"
+    },
     "storageAccountType": {
       "value": "Standard_LRS"
     },
