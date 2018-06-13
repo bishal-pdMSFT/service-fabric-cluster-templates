@@ -30,12 +30,13 @@ Write-Host $clientApplicationId
 Add-Type -LiteralPath "$PSScriptRoot\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
 $authContext = Create-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext -ArgumentList @($authority, $null)
 #$authParams = $ConnectedServiceEndpoint.Auth.Parameters
-#$userCredential = Create-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.UserCredential -ArgumentList @("biprasad@microsoft.com", "***")
-$userCredential = Create-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList @("1548a4b9-e097-4b71-aa8a-28997cf35178", "X78SA0GkWKqfuxPiCTdyCoBPAChwsljJujb3d1tgFFY=")
-#$userCredential = Create-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList @("64ae4047-95fb-4ccf-adaa-fa3282f24f70", "haXBZlyTRMTG9ymDmtdTcew7n/qlCfCG0nEyRXkoIIg=")
 
-    # Acquiring a token using UserCredential implies a non-interactive flow. No credential prompts will occur.
-    $accessToken = $authContext.AcquireToken("64ae4047-95fb-4ccf-adaa-fa3282f24f70", $userCredential).AccessToken
+$userCredential = Create-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.UserCredential -ArgumentList @("username@microsoft.com", "***")
+#$clientCredential = Create-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList @("1548a4b9-e097-4b71-aa8a-28997cf35178", "X78SA0GkWKqfuxPiCTdyCoBPAChwsljJujb3d1tgFFY=")
+
+# Acquiring a token using UserCredential implies a non-interactive flow. No credential prompts will occur.
+$accessToken = $authContext.AcquireToken($clusterApplicationId, $clientApplicationId, $userCredential).AccessToken
+#$accessToken = $authContext.AcquireToken($clusterApplicationId, $clientCredential).AccessToken
 
 
 Write-Host $accessToken
